@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBR+PNK Font Test Page</title>
+    <style>
+        /* Font face declarations - update paths as needed */
+        @font-face {
+            font-family: 'cbrpnk';
+            src: url('./fonts/cbrpnk_icons.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Mono';
+            src: url('./fonts/MonoRegular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* CBR+PNK Color Variables */
+        :root {
+            --white: 255, 255, 255;
+            --yellow: 255, 231, 0;
+            --black: 0, 0, 0;
+            --blue: 0, 167, 216;
+            --gray: 227, 227, 227;
+            --red: 217, 86, 86;
+            --pink: 237, 17, 88;
+            --wierd: 224, 38, 120;
+            --dark: 47, 47, 47;
+        }
+
+        body {
+            background: rgb(var(--black));
+            color: rgb(var(--white));
+            font-family: 'Play', sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: rgb(var(--yellow));
+            text-align: center;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgb(var(--yellow));
+            margin-bottom: 30px;
+            font-family: 'Mono', 'Courier New', monospace !important;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: rgb(var(--yellow));
+            text-align: center;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgb(var(--yellow));
+            margin-bottom: 30px;
+        }
+
+        .test-section {
+            background: rgba(var(--dark), 0.8);
+            border: 2px solid rgb(var(--yellow));
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .test-section h2 {
+            color: rgb(var(--wierd));
+            margin-top: 0;
+            font-family: 'Mono', 'Courier New', monospace !important;
+        }
+
+        .font-test {
+            font-size: 24px;
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 3px solid rgb(var(--blue));
+        }
+
+        .cbrpnk-font {
+            font-family: 'cbrpnk', 'Font Awesome 6 Pro', sans-serif;
+        }
+
+        .mono-font {
+            font-family: 'Mono', 'Courier New', monospace;
+        }
+
+        .icon-test {
+            font-size: 32px;
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 10px;
+            background: rgb(var(--yellow));
+            color: rgb(var(--black));
+            border-radius: 4px;
+        }
+
+        .character-map {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .character-map h4 {
+            grid-column: 1 / -1;
+            font-family: 'Mono' !important;
+            color: #FFE700 !important;
+            background: rgba(0, 0, 0, 0.5) !important;
+            margin: 20px 0 10px 0 !important;
+            font-size: 16px !important;
+            font-weight: bold !important;
+            padding: 10px !important;
+            border: 2px solid #FFE700 !important;
+            text-align: center !important;
+            display: block !important;
+        }
+
+        .character-map .section-header {
+            grid-column: 1 / -1;
+            font-family: 'Mono' !important;
+            color: #FFE700 !important;
+            background: rgba(0, 0, 0, 0.5) !important;
+            margin: 20px 0 10px 0;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px;
+            border: 2px solid #FFE700;
+            text-align: center;
+            display: block;
+        }
+
+        .char-box {
+            background: rgb(var(--dark));
+            border: 1px solid rgb(var(--gray));
+            padding: 15px 10px;
+            text-align: center;
+            font-family: 'cbrpnk', sans-serif;
+            font-size: 24px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .char-box:hover {
+            background: rgb(var(--wierd));
+            transform: scale(1.05);
+            border-color: rgb(var(--yellow));
+        }
+
+        .char-box.known-char {
+            border: 2px solid rgb(var(--yellow));
+            background: rgba(var(--yellow), 0.1);
+        }
+
+        .char-box.known-char:hover {
+            background: rgba(var(--yellow), 0.3);
+        }
+
+        .char-code {
+            font-size: 10px;
+            color: rgb(var(--gray));
+            margin-top: 5px;
+            font-family: 'Mono', 'Courier New', monospace !important;
+        }
+
+        .char-name {
+            font-size: 8px;
+            color: rgb(var(--yellow));
+            margin-top: 2px;
+            font-family: 'Mono', 'Courier New', monospace !important;
+            font-weight: bold;
+        }
+
+        .ascii-dec {
+            font-size: 8px;
+            color: rgb(var(--blue));
+            margin-top: 2px;
+            font-family: 'Mono', 'Courier New', monospace !important;
+        }
+
+        .mono-font {
+            font-family: 'Mono', 'Courier New', monospace !important;
+        }
+
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: 'Mono', 'Courier New', monospace !important;
+        }
+
+        .char-name {
+            font-size: 8px;
+            color: rgb(var(--yellow));
+            margin-top: 2px;
+            font-family: 'Mono', monospace;
+            font-weight: bold;
+        }
+
+        .ascii-dec {
+            font-size: 8px;
+            color: rgb(var(--blue));
+            margin-top: 2px;
+            font-family: 'Mono', monospace;
+        }
+
+        .cbrpnk-font {
+            font-family: 'cbrpnk', sans-serif !important;
+        }
+
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .status.success {
+            background: rgba(0, 255, 0, 0.2);
+            border: 1px solid green;
+        }
+
+        .status.error {
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid red;
+        }
+
+        .glitch {
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 rgb(var(--red)), -2px 0 rgb(var(--blue)); }
+            25% { text-shadow: -2px 0 rgb(var(--red)), 2px 0 rgb(var(--blue)); }
+            50% { text-shadow: 2px 0 rgb(var(--blue)), -2px 0 rgb(var(--red)); }
+            75% { text-shadow: -2px 0 rgb(var(--blue)), 2px 0 rgb(var(--red)); }
+            100% { text-shadow: 2px 0 rgb(var(--red)), -2px 0 rgb(var(--blue)); }
+        }
+
+        .mono-sample {
+            background: rgb(var(--dark));
+            padding: 15px;
+            border-left: 4px solid rgb(var(--yellow));
+            font-family: 'Mono', monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="glitch">CBR+PNK FONT TEST</h1>
+
+        <div class="test-section">
+            <h2>FONT LOADING STATUS</h2>
+            <div id="font-status">
+                <div class="status" id="cbrpnk-status">
+                    <strong>CBR+PNK Icons Font:</strong> <span id="cbrpnk-result">Testing...</span>
+                </div>
+                <div class="status" id="mono-status">
+                    <strong>Mono Font:</strong> <span id="mono-result">Testing...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>CBR+PNK ICON FONT TEST</h2>
+            <div class="font-test cbrpnk-font">
+                CBRPNK Icons: * - + A E T M S { }
+            </div>
+            <p>If the CBR+PNK font is loading correctly, the text above should appear in the custom CBR+PNK icon font style. All character testing and exploration is available in the CHARACTER MAP EXPLORER section below.</p>
+        </div>
+
+        <div class="test-section">
+            <h2>MONO FONT TEST</h2>
+            <div class="font-test mono-font">
+                Mono Font: 1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
+            </div>
+            <div class="mono-sample">SYSTEM INITIALIZATION...
+[OK] NEURAL INTERFACE CONNECTED
+[OK] CYBERDECK ONLINE
+[OK] ICE PROTOCOLS LOADED
+[WARN] UNKNOWN SIGNATURE DETECTED
+> RUN PROGRAM_HACK.EXE
+> ACCESS GRANTED
+</div>
+            <p>This entire page should now use the MonoRegular.ttf font except for the CBR+PNK icon testing sections.</p>
+        </div>
+
+        <div class="test-section">
+            <h2>CHARACTER MAP EXPLORER</h2>
+            <p>Click on any character below to see if it displays correctly with the CBR+PNK font:</p>
+            <div class="character-map" id="character-map">
+                <!-- Characters will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>INTEGRATION NOTES</h2>
+            <div style="color: rgb(var(--yellow));">
+                <h3>If fonts are loading correctly:</h3>
+                <ul>
+                    <li>The CBR+PNK icons should display as unique cyberpunk-themed symbols</li>
+                    <li>The Mono font should look distinctly monospaced and tech-like</li>
+                    <li>Font status above should show "Loaded Successfully"</li>
+                </ul>
+                
+                <h3>If fonts are NOT loading:</h3>
+                <ul>
+                    <li>Check that font files are in the correct './fonts/' directory</li>
+                    <li>Verify file names match exactly: 'cbrpnk_icons.ttf' and 'MonoRegular.ttf'</li>
+                    <li>Check browser console for font loading errors</li>
+                    <li>Try using absolute paths instead of relative paths</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Font loading detection
+        function checkFontLoading() {
+            const cbrpnkStatus = document.getElementById('cbrpnk-status');
+            const cbrpnkResult = document.getElementById('cbrpnk-result');
+            const monoStatus = document.getElementById('mono-status');
+            const monoResult = document.getElementById('mono-result');
+
+            // Check if document.fonts API is available
+            if ('fonts' in document) {
+                // Check CBR+PNK font
+                document.fonts.load('12px cbrpnk').then(() => {
+                    const fontAvailable = document.fonts.check('12px cbrpnk');
+                    if (fontAvailable) {
+                        cbrpnkResult.textContent = 'Loaded Successfully';
+                        cbrpnkStatus.classList.add('success');
+                    } else {
+                        cbrpnkResult.textContent = 'Failed to Load';
+                        cbrpnkStatus.classList.add('error');
+                    }
+                }).catch(() => {
+                    cbrpnkResult.textContent = 'Error Loading';
+                    cbrpnkStatus.classList.add('error');
+                });
+
+                // Check Mono font
+                document.fonts.load('12px Mono').then(() => {
+                    const fontAvailable = document.fonts.check('12px Mono');
+                    if (fontAvailable) {
+                        monoResult.textContent = 'Loaded Successfully';
+                        monoStatus.classList.add('success');
+                    } else {
+                        monoResult.textContent = 'Failed to Load';
+                        monoStatus.classList.add('error');
+                    }
+                }).catch(() => {
+                    monoResult.textContent = 'Error Loading';
+                    monoStatus.classList.add('error');
+                });
+            } else {
+                cbrpnkResult.textContent = 'Font API not supported';
+                monoResult.textContent = 'Font API not supported';
+            }
+        }
+
+        // Generate comprehensive character map for testing
+        function generateCharacterMap() {
+            const characterMap = document.getElementById('character-map');
+            
+            // Known CBR+PNK font characters
+            const knownCBRPNK = [
+                { char: '*', code: 'U+2A', name: 'Stress' },
+                { char: '-', code: 'U+2D', name: 'Remove Die' },
+                { char: '+', code: 'U+2B', name: 'Add Die' },
+                { char: 'A', code: 'U+41', name: '"A" Symbol' },
+                { char: 'E', code: 'U+45', name: 'Effect' },
+                { char: 'T', code: 'U+54', name: 'Threat' },
+                { char: 'M', code: 'U+4D', name: '"M" Symbol' },
+                { char: 'S', code: 'U+53', name: 'Synergy' },
+                { char: '{', code: 'U+7B', name: 'Increase' },
+                { char: '}', code: 'U+7D', name: 'Decrease' }
+            ];
+
+            // Create section for known CBR+PNK characters
+            const knownHeader = document.createElement('h4');
+            knownHeader.className = 'section-header';
+            knownHeader.textContent = 'Known CBR+PNK Icons';
+            knownHeader.style.cssText = `
+                grid-column: 1 / -1;
+                font-family: 'Mono' !important;
+                color: #FFE700 !important;
+                background: rgba(0, 0, 0, 0.8) !important;
+                margin: 20px 0 10px 0 !important;
+                font-size: 18px !important;
+                font-weight: bold !important;
+                padding: 15px !important;
+                border: 3px solid #FFE700 !important;
+                text-align: center !important;
+                display: block !important;
+                text-transform: uppercase !important;
+            `;
+            characterMap.appendChild(knownHeader);
+
+            knownCBRPNK.forEach(item => {
+                const charBox = document.createElement('div');
+                charBox.className = 'char-box known-char';
+                charBox.innerHTML = `
+                    <span class="cbrpnk-font">${item.char}</span>
+                    <div class="char-code">${item.code}</div>
+                    <div class="char-name">${item.name}</div>
+                `;
+                characterMap.appendChild(charBox);
+            });
+
+            // ASCII printable characters (32-126)
+            const asciiHeader = document.createElement('h4');
+            asciiHeader.className = 'section-header';
+            asciiHeader.textContent = 'ASCII Characters (32-126)';
+            asciiHeader.style.cssText = `
+                grid-column: 1 / -1;
+                font-family: 'Mono' !important;
+                color: #00A7D8 !important;
+                background: rgba(0, 0, 0, 0.8) !important;
+                margin: 20px 0 10px 0 !important;
+                font-size: 18px !important;
+                font-weight: bold !important;
+                padding: 15px !important;
+                border: 3px solid #00A7D8 !important;
+                text-align: center !important;
+                display: block !important;
+                text-transform: uppercase !important;
+            `;
+            characterMap.appendChild(asciiHeader);
+
+            for (let i = 32; i <= 126; i++) {
+                const char = String.fromCharCode(i);
+                const charBox = document.createElement('div');
+                charBox.className = 'char-box';
+                charBox.innerHTML = `
+                    <span class="cbrpnk-font">${char}</span>
+                    <div class="char-code">U+${i.toString(16).toUpperCase().padStart(2, '0')}</div>
+                    <div class="ascii-dec">Dec: ${i}</div>
+                `;
+                charBox.addEventListener('click', () => copyToClipboard(char, `U+${i.toString(16).toUpperCase().padStart(2, '0')}`));
+                characterMap.appendChild(charBox);
+            }
+
+            // Extended ASCII (128-255)
+            const extendedHeader = document.createElement('h4');
+            extendedHeader.className = 'section-header';
+            extendedHeader.textContent = 'Extended ASCII (128-255)';
+            extendedHeader.style.cssText = `
+                grid-column: 1 / -1;
+                font-family: 'Mono' !important;
+                color: #E02678 !important;
+                background: rgba(0, 0, 0, 0.8) !important;
+                margin: 20px 0 10px 0 !important;
+                font-size: 18px !important;
+                font-weight: bold !important;
+                padding: 15px !important;
+                border: 3px solid #E02678 !important;
+                text-align: center !important;
+                display: block !important;
+                text-transform: uppercase !important;
+            `;
+            characterMap.appendChild(extendedHeader);
+
+            for (let i = 128; i <= 255; i++) {
+                const char = String.fromCharCode(i);
+                const charBox = document.createElement('div');
+                charBox.className = 'char-box';
+                charBox.innerHTML = `
+                    <span class="cbrpnk-font">${char}</span>
+                    <div class="char-code">U+${i.toString(16).toUpperCase().padStart(2, '0')}</div>
+                `;
+                charBox.addEventListener('click', () => copyToClipboard(char, `U+${i.toString(16).toUpperCase().padStart(2, '0')}`));
+                characterMap.appendChild(charBox);
+            }
+
+            // Unicode blocks that might contain icons
+            const unicodeRanges = [
+                { start: 0x2000, end: 0x206F, name: 'General Punctuation' },
+                { start: 0x2070, end: 0x209F, name: 'Superscripts/Subscripts' },
+                { start: 0x20A0, end: 0x20CF, name: 'Currency Symbols' },
+                { start: 0x2100, end: 0x214F, name: 'Letterlike Symbols' },
+                { start: 0x2190, end: 0x21FF, name: 'Arrows' },
+                { start: 0x2200, end: 0x22FF, name: 'Mathematical Operators' },
+                { start: 0x2300, end: 0x23FF, name: 'Miscellaneous Technical' },
+                { start: 0x2400, end: 0x243F, name: 'Control Pictures' },
+                { start: 0x2460, end: 0x24FF, name: 'Enclosed Alphanumerics' },
+                { start: 0x2500, end: 0x257F, name: 'Box Drawing' },
+                { start: 0x2580, end: 0x259F, name: 'Block Elements' },
+                { start: 0x25A0, end: 0x25FF, name: 'Geometric Shapes' },
+                { start: 0x2600, end: 0x26FF, name: 'Miscellaneous Symbols' },
+                { start: 0x2700, end: 0x27BF, name: 'Dingbats' }
+            ];
+
+            unicodeRanges.forEach(range => {
+                const rangeHeader = document.createElement('h4');
+                rangeHeader.className = 'section-header';
+                rangeHeader.textContent = `${range.name} (U+${range.start.toString(16).toUpperCase()}-U+${range.end.toString(16).toUpperCase()})`;
+                rangeHeader.style.cssText = `
+                    grid-column: 1 / -1;
+                    font-family: 'Mono' !important;
+                    color: #D95656 !important;
+                    background: rgba(0, 0, 0, 0.8) !important;
+                    margin: 20px 0 10px 0 !important;
+                    font-size: 16px !important;
+                    font-weight: bold !important;
+                    padding: 12px !important;
+                    border: 2px solid #D95656 !important;
+                    text-align: center !important;
+                    display: block !important;
+                    text-transform: uppercase !important;
+                `;
+                characterMap.appendChild(rangeHeader);
+
+                for (let i = range.start; i <= Math.min(range.end, range.start + 63); i++) { // Limit to first 64 chars per range
+                    try {
+                        const char = String.fromCodePoint(i);
+                        const charBox = document.createElement('div');
+                        charBox.className = 'char-box';
+                        charBox.innerHTML = `
+                            <span class="cbrpnk-font">${char}</span>
+                            <div class="char-code">U+${i.toString(16).toUpperCase().padStart(4, '0')}</div>
+                        `;
+                        charBox.addEventListener('click', () => copyToClipboard(char, `U+${i.toString(16).toUpperCase().padStart(4, '0')}`));
+                        characterMap.appendChild(charBox);
+                    } catch (e) {
+                        // Skip invalid code points
+                    }
+                }
+            });
+        }
+
+        // Copy character and code to clipboard
+        function copyToClipboard(char, code) {
+            const text = `Character: ${char}\nCode: ${code}\nCSS: content: "${char}";`;
+            navigator.clipboard.writeText(text).then(() => {
+                // Visual feedback
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed; top: 20px; right: 20px; 
+                    background: rgb(var(--yellow)); color: rgb(var(--black)); 
+                    padding: 10px; border-radius: 4px; z-index: 1000;
+                    font-family: 'Mono';
+                `;
+                notification.textContent = `Copied: ${code}`;
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 2000);
+            }).catch(() => {
+                console.log(`Character: ${char}, Code: ${code}`);
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkFontLoading, 1000); // Wait a bit for fonts to load
+            generateCharacterMap();
+        });
+
+        // Add some cyberpunk flair
+        setInterval(() => {
+            const glitchElements = document.querySelectorAll('.glitch');
+            glitchElements.forEach(el => {
+                el.style.textShadow = `
+                    ${Math.random() * 4 - 2}px 0 rgb(var(--red)),
+                    ${Math.random() * 4 - 2}px 0 rgb(var(--blue))
+                `;
+            });
+        }, 100);
+    </script>
+</body>
+</html>

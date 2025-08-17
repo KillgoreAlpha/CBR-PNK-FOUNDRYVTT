@@ -1,6 +1,6 @@
 export class CbrSettings {
 	static register() {
-		game.settings.register("CBRPNK", "wiedModule", {
+		game.settings.register("CBRPNK", "wierdModule", {
 			name: "Wierd",
 			hint: "Setting to add Wierd options to character sheets.",
 			scope: "world",

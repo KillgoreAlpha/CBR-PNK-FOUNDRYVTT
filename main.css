@@ -1,4 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Tiny5&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Mono&display=swap');
+
+@font-face {
+            font-family: 'cbrpnk';
+            src: url('./fonts/cbrpnk_icons.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Mono';
+            src: url('./fonts/MonoRegular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
 
 :root {
   --white: 255, 255, 255;
@@ -32,6 +48,7 @@ form.card section {
 }
 .GLICHED .dots::after {
   color: rgb(var(--yellow)) !important;
+  font-family: "Mono";
 }
 .GLICHED h3 {
   position: relative;
@@ -39,6 +56,7 @@ form.card section {
   margin: 0 0 8px;
   overflow: hidden;
   width: 95%;
+  font-family: "Mono";
 }
 .GLICHED h3:before, .GLICHED h3:after {
   content: attr(data-text);
@@ -253,12 +271,14 @@ form.card section {
   margin: 0;
 }
 .approach::before {
-  content: "APPROACH";
+  content: "A: ";
   text-orientation: upright;
   writing-mode: vertical-lr;
   position: absolute;
   top: 0;
   left: -20px;
+  font-family: "cbrpnk", "Mono";
+  font-weight: bold;
 }
 .approach > div {
   display: grid;
@@ -326,6 +346,11 @@ section.skills p {
 section.skills p strong {
   color: rgb(var(--dark));
 }
+section.skills::before,
+.harm::before {
+  font-family: "cbrpnk", "Mono";
+  font-weight: bold;
+}
 section.skills::before {
   content: "SKILLS";
   text-orientation: upright;
@@ -333,6 +358,8 @@ section.skills::before {
   position: absolute;
   top: 0;
   left: -20px;
+  font-family: "cbrpnk", "Mono";
+  font-weight: bold;
 }
 section.skills > div {
   display: flex;
@@ -394,11 +421,38 @@ section.skills .dots .box {
   }
 }
 
-.augmentations .GLICHED .text,
+.augmentations .GLICHED .text {
+  font-family: "Mono";
+  text-shadow: 
+    2px 0 0 rgb(var(--red)),
+    -2px 0 0 rgb(var(--blue)),
+    0 2px 0 rgb(var(--wierd)),
+    0 -2px 0 rgb(var(--yellow));
+  animation: text-glitch 0.3s infinite;
+}
+
+@keyframes text-glitch {
+  0% { 
+    text-shadow: 2px 0 rgb(var(--red)), -2px 0 rgb(var(--blue)); 
+  }
+  25% { 
+    text-shadow: -2px 0 rgb(var(--red)), 2px 0 rgb(var(--blue)); 
+  }
+  50% { 
+    text-shadow: 2px 0 rgb(var(--blue)), -2px 0 rgb(var(--red)); 
+  }
+  75% { 
+    text-shadow: -2px 0 rgb(var(--blue)), 2px 0 rgb(var(--red)); 
+  }
+  100% { 
+    text-shadow: 2px 0 rgb(var(--red)), -2px 0 rgb(var(--blue)); 
+  }
+}
 .hunted label.angleOpen,
-.hunted h1{
-    color: rgb(var(--yellow));
-    animation: linear 1s infinite alternate agu-gl;
+.hunted h1 {
+  color: rgb(var(--yellow));
+  animation: linear 1s infinite alternate agu-gl;
+  font-family: "cbrpnk", "Mono";
 }
 
 .augmentations .GLICHED .text p {
@@ -497,8 +551,8 @@ section.gear p {
   background: rgb(var(--blue));
 }
 .stress input:checked + label::before {
-  font-family: "Font Awesome 6 Pro";
-  content: "\f0e7";
+  font-family: "cbrpnk", "Mono";
+  content: "*"; /* CBR+PNK Stress icon U+2A */
   transform: rotate(-45deg);
   display: inline-block;
   font-size: large;
@@ -533,10 +587,25 @@ section.gear p {
   font-weight: normal;
   margin: 0;
 }
-.harm li[data-type="efect"]::after { content: " E ⬇️"; }
-.harm li[data-type="dice"]::after  { content: "🎲⬇️"; }
-.harm li[data-type="out"]::after { content: "OUT"; }
-.harm li[data-type="die"]::after { content: "💀"; }
+.harm li[data-type="efect"]::after { 
+  content: "}E"; 
+  font-family: "cbrpnk", "Mono";
+}
+
+.harm li[data-type="dice"]::after { 
+  content: "}D"; 
+  font-family: "cbrpnk", "Mono";
+}
+
+.harm li[data-type="out"]::after { 
+  content: "OUT"; 
+  font-family: "cbrpnk", "Mono";
+}
+
+.harm li[data-type="die"]::after { 
+  content: "💀"; 
+  font-family: "cbrpnk", "Mono";
+}
 
 .harm::before {
   content: "HARM";
@@ -547,6 +616,8 @@ section.gear p {
   right: -10px;
   background: rgb(var(--yellow));
   padding: 28px 10px;
+  font-family: "cbrpnk", "Mono";
+  font-weight: bold;
 }
 
 form.runnerCard {
@@ -581,23 +652,23 @@ label.name {width: 100%;}
 
 .art h1,
 .persona h1 {
-    position: absolute;
-    bottom: 3px;
-    left: 0;
-    right: 0;
-    background: rgba(var(--black),0.66);
-    border:  none;
-    margin: 0;
-    padding: 20px 0;
-    backdrop-filter: blur(5px);
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  right: 0;
+  background: rgba(var(--black),0.66);
+  border:  none;
+  margin: 0;
+  padding: 20px 0;
+  backdrop-filter: blur(5px);
 }
 
 .art h1 input,
 .persona h1 input {
-    color: rgb(var(--white));
-    border: none;
-    padding: 20px;
-    border-bottom: 1px solid rgb(var(--gray));
+  color: rgb(var(--white));
+  border: none;
+  padding: 20px;
+  border-bottom: 1px solid rgb(var(--gray));
 }
 
 .roll > div {
@@ -624,8 +695,9 @@ section.roll {
   display: grid;
 }
 .efect::before {
-  content: "EFFECT: ";
+  content: "E: ";
   width: 55px;
+  font-family: "cbrpnk", "Mono";
 }
 .efect label {
   background: rgb(var(--yellow));
@@ -639,8 +711,9 @@ section.roll {
 }
 
 .threat::before {
-  content: "THREAT: ";
+  content: "T: ";
   width: 55px;
+  font-family: "cbrpnk", "Mono";
 }
 .threat label {
   background: rgb(var(--red));
@@ -657,9 +730,9 @@ section.roll {
 }
 
 .addDice::after {
-  content: "➕ DICE";
+  content: "+";
+  font-family: "cbrpnk", "Mono";
 }
-
 .approach .select h3 {
   color: rgb(var(--yellow));
   border-color: rgb(var(--yellow));
@@ -685,7 +758,6 @@ li.chat-message.message.flexcol:has(.runner) {
 
 li.chat-message.message.flexcol:has(.runner) header {
   display: none;
-  
 }
 
 li.chat-message.message.flexcol:has(.runner) .situation {
@@ -727,6 +799,7 @@ li.chat-message.message.flexcol .dice span {
   height: 15px;
   text-align: center;
   font-weight: bold;
+  font-family: "cbrpnk", "Mono";
 }
 
 li.chat-message.message.flexcol .desc strong {
@@ -754,7 +827,7 @@ li.chat-message.message.flexcol .dice span.GLICHED {
 
 h1 input[type="text"],
 *:not(::after):not(::before) {
-  font-family: "Play", sans-serif;
+  font-family: "Play";
   font-weight: 400;
   font-style: normal;
   background: transparent;
@@ -775,10 +848,8 @@ input[type="text"],
 .skills::before,
 .runnerCard h3,
 .roll *,
-.approach::before,
 .approach * {
-  font-family: "Tiny5", sans-serif;
-
+  font-family: "Mono";
 }
 
 .angle {
@@ -815,7 +886,7 @@ label.angleOpen {
   text-align: center;
   display: block;
   color: white;
-  font-family: Tiny5;
+  font-family: Mono;
   font-size: large;
 }
 
@@ -842,31 +913,31 @@ input[name="system.angle.for"] {
 em {font-style: italic;color: rgb(var(--yellow));}
 
 .bar {
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 20px;
 }
 
 .bar > * {
-    height: 20px;
-    border: 2px solid rgb(var(--gray));
+  height: 20px;
+  border: 2px solid rgb(var(--gray));
 }
 
 .bar label {
-    color: rgb(var(--white));
+  color: rgb(var(--white));
 }
 
 .bar input:checked + label {
-    background: rgb(var(--yellow));
-    color: rgb(var(--red));
+  background: rgb(var(--yellow));
+  color: rgb(var(--red));
 }
 
 .bar > div {
-    width: 33%;
-    background: rgb(var(--black));
-    color: rgb(var(--white));
-    text-align: center;
+  width: 33%;
+  background: rgb(var(--black));
+  color: rgb(var(--white));
+  text-align: center;
 }
 
 .bar .DEBT {
@@ -880,8 +951,8 @@ em {font-style: italic;color: rgb(var(--yellow));}
 }
 
 button.load {
-    background: rgb(var(--yellow));
-    font-size: 11px;
+  background: rgb(var(--yellow));
+  font-size: 11px;
 }
 
 .harm .track {
@@ -904,11 +975,11 @@ button.load {
   min-width: 70px;
   justify-content: center;
   background: linear-gradient(
-      90deg,
-      rgb(var(--yellow)) 0%,
-      rgb(var(--yellow)) calc(var(--stack)/var(--max)*100%),
-      transparent calc(var(--stack)/var(--max)*100%),
-      transparent 100%
+    90deg,
+    rgb(var(--yellow)) 0%,
+    rgb(var(--yellow)) calc(var(--stack)/var(--max)*100%),
+    transparent calc(var(--stack)/var(--max)*100%),
+    transparent 100%
   );
 }
 
@@ -919,7 +990,7 @@ button.load {
 
 #chat-controls .roll-type-select {
   background: rgb(var(--blue));
-  font-family: "Tiny5";
+  font-family: "Mono";
 }
 
 textarea#chat-message {
@@ -931,10 +1002,11 @@ textarea#chat-message {
 .fa-solid,
 .fas {
   color: rgb(var(--wierd));
+  font-family: "cbrpnk", "Mono";
 }
 
 figcaption {
-  font-family: "Tiny5";
+  font-family: "Mono";
   background:  rgba(var(--red),.5)
 }
 
@@ -1006,7 +1078,7 @@ form.itemCard  input[type="text"] {
   clip-path: polygon(100% 0, 100% 80%, 80% 100%, 0 100%, 0 0);
   background: rgb(var(--yellow));
   border: none;
-  font-family: "Tiny5";
+  font-family: "Mono";
   font-size: large;
   padding: 0 5px;
 }
@@ -1034,14 +1106,14 @@ form.itemCard  input[type="text"] {
 
 .title span {
   font-size: small;
-  font-family: "Tiny5";
+  font-family: "Mono";
 }
 
 .rank h3 {
   font-weight: bold;
   margin: 0;
   color: rgb(var(--white));
-  font-family: "Tiny5";
+  font-family: "Mono";
 }
 
 .hunterCard header {
@@ -1155,7 +1227,7 @@ form.hunterCard header textarea {
 .tracks p {
   display: inline-block;
   padding: 10px 5px;
-  font-family: "Tiny5";
+  font-family: "Mono";
   color: rgb(var(--white));
 }
 
@@ -1169,7 +1241,7 @@ form.hunterCard header textarea {
   font-weight: bold;
   margin: 0;
   color: rgb(var(--white));
-  font-family: "Tiny5";
+  font-family: "Mono";
   background: rgb(var(--red));
   clip-path: polygon(20% 0%, 95% 0%, 100% 40%, 100% 80%, 100% 100%, 0 100%, 0% 80%, 0 0);
   padding: 5px 10px;
@@ -1294,12 +1366,12 @@ form.runnerCard .headerButton i.fa-solid {
   100% {background-color: rgb(var(--blue));; }
 }
 input[name="addDice"]:checked + label:not(:nth-child(10)) {
-    animation: highlight 2s linear 0s infinite alternate;
+  animation: highlight 2s linear 0s infinite alternate;
 }
 
 .gear .stack {
-    color: rgb(var(--wierd));
-    margin-left: 5px;
+  color: rgb(var(--wierd));
+  margin-left: 5px;
 }
 
 .runner.overload {
@@ -1316,9 +1388,199 @@ form.runnerCard header img {
 }
 
 .message-content :is(h1,h3){
-    color: white;
-    font-family: "Play", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 1.7em;
+  color: white;
+  font-family: "Play";
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.7em;
 }
+
+button, 
+input[type="button"], 
+input[type="submit"] {
+  font-family: "cbrpnk", "Mono";
+}
+
+.cbrpnk-button {
+  background: rgb(var(--yellow));
+  color: rgb(var(--black));
+  border: 2px solid rgb(var(--black));
+  font-family: "cbrpnk", "Mono";
+  clip-path: polygon(20% 0%, 95% 0%, 100% 40%, 100% 80%, 100% 100%, 0 100%, 0% 80%, 0 0);
+  padding: 10px 20px;
+  transition: all 0.2s ease;
+}
+.cbrpnk-button:hover {
+  background: rgb(var(--wierd));
+  color: rgb(var(--white));
+  transform: translateY(-2px);
+}
+
+.cbrpnk-input {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid rgb(var(--yellow));
+  color: rgb(var(--white));
+  font-family: "Mono";
+  padding: 5px;
+}
+.cbrpnk-input:focus {
+  border-bottom-color: rgb(var(--wierd));
+  outline: none;
+}
+
+.cbrpnk-glow {
+  text-shadow: 
+    0 0 5px rgb(var(--yellow)),
+    0 0 10px rgb(var(--yellow)),
+    0 0 15px rgb(var(--yellow));
+}
+
+.cbrpnk-border {
+  border: 2px solid rgb(var(--yellow));
+  box-shadow: 
+    0 0 10px rgba(var(--yellow), 0.5),
+    inset 0 0 10px rgba(var(--yellow), 0.1);
+}
+
+.cbrpnk-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.cbrpnk-scroll::-webkit-scrollbar-track {
+    background: rgb(var(--black));
+}
+
+.cbrpnk-scroll::-webkit-scrollbar-thumb {
+    background: rgb(var(--yellow));
+    clip-path: polygon(20% 0%, 95% 0%, 100% 40%, 100% 80%, 100% 100%, 0 100%, 0% 80%, 0 0);
+}
+
+.cbrpnk-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--wierd));
+}
+input[type="text"]:focus,
+textarea:focus {
+  border-bottom-color: rgb(var(--yellow));
+  box-shadow: 0 1px 0 rgb(var(--yellow));
+}
+
+/* CBR+PNK CHARACTER DEBUGGING CLASSES */
+/* =================================== */
+/* Add these classes to any element to test if the CBR+PNK font is working */
+
+.font-test-cbrpnk {
+  font-family: "cbrpnk", "Mono" !important;
+  font-size: 24px !important;
+  color: rgb(var(--yellow)) !important;
+  background: rgb(var(--black)) !important;
+  padding: 10px !important;
+  border: 2px solid rgb(var(--wierd)) !important;
+}
+
+.font-test-mono {
+  font-family: "Mono" !important;
+  font-size: 16px !important;
+  color: rgb(var(--white)) !important;
+  background: rgb(var(--dark)) !important;
+  padding: 10px !important;
+  border: 1px solid rgb(var(--gray)) !important;
+}
+
+/* TEST CLASSES FOR A AND M CHARACTERS */
+/* ==================================== */
+/* Use these classes to see where A and M appear in your system */
+
+.test-a::before {
+  content: "A";
+  font-family: "cbrpnk", "Mono";
+  color: rgb(var(--yellow));
+  background: rgb(var(--black));
+  padding: 2px 4px;
+  margin-right: 5px;
+  border: 1px solid rgb(var(--yellow));
+}
+
+.test-m::before {
+  content: "M";
+  font-family: "cbrpnk", "Mono";
+  color: rgb(var(--blue));
+  background: rgb(var(--black));
+  padding: 2px 4px;
+  margin-right: 5px;
+  border: 1px solid rgb(var(--blue));
+}
+
+/* A and M with other characters for testing combinations */
+.test-a-increase::before {
+  content: "A {";
+  font-family: "cbrpnk", "Mono";
+  color: rgb(var(--yellow));
+}
+
+.test-a-decrease::before {
+  content: "A }";
+  font-family: "cbrpnk", "Mono";
+  color: rgb(var(--red));
+}
+
+.test-m-increase::before {
+  content: "M {";
+  font-family: "cbrpnk", "Mono";
+  color: rgb(var(--yellow));
+}
+
+.test-m-decrease::before {
+  content: "M }";
+  font-family: "cbrpnk", "Mono";
+  color: rgb(var(--red));
+}
+
+.test-a-effect::before {
+  content: "A E";
+  font-family: "cbrpnk", "Mono";
+  color: rgb(var(--white));
+}
+
+.test-m-threat::before {
+  content: "M T";
+  font-family: "cbrpnk", "Mono";
+  color: rgb(var(--white));
+}
+
+.test-a-synergy::before {
+  content: "A S";
+  font-family: "cbrpnk", "Mono";
+  color: rgb(var(--blue));
+}
+
+.test-m-stress::before {
+  content: "M *";
+  font-family: "cbrpnk", "Mono";
+  color: rgb(var(--wierd));
+}
+
+/* REMOVE THESE TEST CLASSES ONCE YOU FIGURE OUT WHAT A AND M ARE */
+/* ================================================================ */
+
+/*
+KNOWN CBR+PNK CHARACTERS:
+U+2A (*) = Stress
+U+2D (-) = Remove a Die  
+U+2B (+) = Add a Die
+U+41 (A) = Unknown - possibly Approach, Action, Augmentation, or Advantage
+U+45 (E) = Effect
+U+54 (T) = Threat
+U+4D (M) = Unknown - possibly Matrix, Module, Modifier, or Mark
+U+53 (S) = Synergy
+U+7B ({) = Increase
+U+7D (}) = Decrease
+
+USAGE INSTRUCTIONS:
+1. Apply this CSS to your FoundryVTT system
+2. Add test classes like "test-a" or "test-m" to elements in your character sheets
+3. See where A and M symbols appear and in what context
+4. Try combination classes like "test-a-increase" to test theories
+5. Once you identify what A and M are, remove all the test classes
+6. Update the actual CBR+PNK character usage throughout the CSS
+*/
