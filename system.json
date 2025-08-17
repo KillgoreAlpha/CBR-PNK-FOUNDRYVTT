@@ -7,9 +7,13 @@
       "name": "Kiszu",
       "discord": "2137",
       "url": "https://github.com/P4NTY/"
+    },
+    {
+      "name": "KillgoreAlpha",
+      "url": "https://github.com/KillgoreAlpha/"
     }
   ],
-  "version": "0.97",
+  "version": "0.97.1",
   "compatibility": {
     "minimum": 11,
     "verified": 13,
@@ -17,8 +21,8 @@
   },
   "esmodules": [ "main.js" ],
   "styles": ["main.css" ],
-  "url": "https://github.com/P4NTY/CBR-PNK-FOUNDRY",
-  "background": "systems/CBRPNK/assets/CBRPNK_splash.webp",
-  "manifest": "https://github.com/P4NTY/CBR-PNK-FOUNDRY/releases/latest/download/system.json",
-  "download": "https://github.com/P4NTY/CBR-PNK-FOUNDRY/releases/download/0.97/CBRPNK.zip"
+  "url": "https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT",
+  "background": "systems/CBRPNK/assets/CBRPNK_splash.png",
+  "manifest": "https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRY/releases/latest/download/system.json",
+  "download": "https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRY/releases/download/0.97.1/CBRPNK.zip"
 }

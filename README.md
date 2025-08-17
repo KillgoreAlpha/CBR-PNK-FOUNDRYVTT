@@ -1,11 +1,11 @@
-![Splash](https://raw.githubusercontent.com/P4NTY/CBR-PNK-FOUNDRY/main/assets/CBRPNK_splash.webp)
+![Splash](https://raw.githubusercontent.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/main/assets/CBRPNK_splash.png)
 # CBR+PNK ON FOUNDRY VTT
 Unofficial system to play CBR+PNK on Foundry VTT
-- Link to install: [https://github.com/P4NTY/CBR-PNK-FOUNDRY/releases/latest/download/system.json](https://github.com/P4NTY/CBR-PNK-FOUNDRY/releases/latest/download/system.json)
+- Link to install: [https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/releases/latest/download/system.json](https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/releases/latest/download/system.json)
 - Link to TRPG system: https://emanoelmelo.itch.io/cbrpnk-core
 
 ## HOW IT LOOKS:
-![image](https://github.com/P4NTY/CBR-PNK-FOUNDRY/blob/main/assets/image.png?raw=true)
+![image](https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/blob/main/assets/image.png?raw=true)
 - The left button is adding and the right button is decreasing values.
 - GLICHED status can also be given with the middle mouse button -OR- just click GLICHED.
 - Selecting the value of the APPROACH and SKILL by clicking on the label.
@@ -20,4 +20,6 @@ Unofficial system to play CBR+PNK on Foundry VTT
 following: [https://emanoelmelo.itch.io/cbrpnk-toolkit](https://emanoelmelo.itch.io/cbrpnk-toolkit)
 > Published independently under the 'CBR+PNK Compatibility License' with no association with Emanoel Melo, The Cabinet of Curiosities, Mythworks, or other official publishers of CBR+PNK.
 
-[![COFFE](https://cdn.buymeacoffee.com/buttons/v2/default-blue.png)](https://www.buymeacoffee.com/kiszu)
+[Mono Font](https://www.fontspace.com/mono-font-f57596) by Rony Setya Siswadi
+
+Credit to [Kiszu](https://github.com/P4NTY/CBR-PNK-FOUNDRY) and [RemyAllegro](https://github.com/RemyAllegro/CBR-PNK-CSB) for their respective implementations. 

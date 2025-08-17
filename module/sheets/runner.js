@@ -13,7 +13,7 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
     getData() {
         const context = super.getData();
         context.system = context.actor.system;
-        context.system.wierd = game.settings.get("CBRPNK", "wiedModule");
+        context.system.wierd = game.settings.get("CBRPNK", "wierdModule");
         context.system.AugGlitchedCheck = game.settings.get("CBRPNK", "AugGlitchedCheck");
 
         return context;
