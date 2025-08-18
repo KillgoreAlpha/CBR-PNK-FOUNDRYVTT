@@ -5,7 +5,7 @@ Unofficial system to play CBR+PNK on Foundry VTT
 - Link to TRPG system: https://emanoelmelo.itch.io/cbrpnk-core
 
 ## HOW IT LOOKS:
-![image](https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/blob/main/assets/image.png?raw=true)
+![image](https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/main/assets/image.png)
 - The left button is adding and the right button is decreasing values.
 - GLITCHED status can also be given with the middle mouse button -OR- just click GLITCHED.
 - Selecting the value of the APPROACH and SKILL by clicking on the label.
@@ -14,7 +14,6 @@ Unofficial system to play CBR+PNK on Foundry VTT
 
 ## To do:
 - Taking the text to the language packages
-- Make Hacks card
 
 ## License
 following: [https://emanoelmelo.itch.io/cbrpnk-toolkit](https://emanoelmelo.itch.io/cbrpnk-toolkit)
