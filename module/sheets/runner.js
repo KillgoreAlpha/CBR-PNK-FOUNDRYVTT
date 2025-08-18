@@ -14,6 +14,7 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
         const context = super.getData();
         context.system = context.actor.system;
         context.system.weird = game.settings.get("CBRPNK", "weirdModule");
+        context.system.netscape = game.settings.get("CBRPNK", "netscapeModule");
         context.system.AugGlitchedCheck = game.settings.get("CBRPNK", "AugGlitchedCheck");
 
         return context;

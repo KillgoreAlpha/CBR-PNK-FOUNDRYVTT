@@ -1,6 +1,7 @@
 import cbrItem from "./module/sheets/item.js";
 import cbrRunner from "./module/sheets/runner.js";
 import cbrHunter from "./module/sheets/hunter.js";
+import cbrVpnTracker from "./module/sheets/vpntracker.js";
 import { CbrSettings } from "./module/system.js";
 
 Hooks.once("init", function () {
@@ -12,6 +13,7 @@ Hooks.once("init", function () {
     Actors.unregisterSheet("core", ActorSheet);
     Actors.registerSheet("cbr", cbrRunner, {types: ["runner"],makeDefault: true});
     Actors.registerSheet("cbr", cbrHunter, {types: ["hunter"],makeDefault: true});
+    Actors.registerSheet("cbr", cbrVpnTracker, {types: ["vpntracker"],makeDefault: true});
 
     CbrSettings.register();
 

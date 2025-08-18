@@ -10,6 +10,16 @@ export class CbrSettings {
 			requiresReload: true
 		});
 
+		game.settings.register("CBRPNK", "netscapeModule", {
+			name: "Netscape V1.0",
+			hint: "Setting to add Netscape V1.0 hacking options to character sheets.",
+			scope: "world",
+			config: true,
+			type: Boolean,
+			default: false,
+			requiresReload: true
+		});
+
 		game.settings.register("CBRPNK", "resetDice", {
 			name: "Reset of additional dice",
 			hint: "If this option is enabled, the extra dice will automatically switch to 0 after each throw.",

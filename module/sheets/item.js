@@ -22,7 +22,7 @@ export default class cbrItem extends foundry.appv1.sheets.ItemSheet {
     }
 
     _changeStack(event) {
-        const btnClick = 
+        const btnClick =
             (event.which === 1 || event.button === 0) ? "l" :
             (event.which === 2 || event.button === 1) ? "m" :
             (event.which === 3 || event.button === 2) ? "r" : null;

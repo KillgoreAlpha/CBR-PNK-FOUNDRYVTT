@@ -524,4 +524,20 @@
         </li>
     </ol>
   </section>
+  {{#if system.netscape}}
+  <section class="netscape">
+    <h3>NETSCAPE V1.0</h3>
+    <div class="net-persona">
+      <h4>NET PERSONA</h4>
+      <div class="theme-selector">
+        <select name="system.NETSCAPE.netPersona.theme">
+          {{#each system.NETSCAPE.netPersona.themes}}
+            <option value="{{@key}}" {{#if (isEqual ../system.NETSCAPE.netPersona.theme @key)}}selected{{/if}}>{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <p class="theme-desc">Your cyberspace sensory experience theme. Incongruities can cause GLITCHES.</p>
+    </div>
+  </section>
+  {{/if}}
 </form>
