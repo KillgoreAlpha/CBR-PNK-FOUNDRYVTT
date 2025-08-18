@@ -39,13 +39,15 @@ jobs:
       - name: Create zip archive
         if: steps.check_release.outputs.exists == 'false'
         run: |
-          # Create zip excluding .git directory and other unnecessary files
-          zip -r CBRPNK.zip . \
-            -x ".git/*" \
-            -x ".github/*" \
-            -x "*.md" \
-            -x ".gitignore"
-          echo "Created CBRPNK.zip"
+          mkdir -p CBRPNK
+          rsync -av --exclude='.git/' \
+                   --exclude='.github/' \
+                   --exclude='.gitignore' \
+                   --exclude='fonttest.html' \
+                   --exclude='CBRPNK/' \
+                   . CBRPNK/
+          zip -r CBRPNK.zip CBRPNK/
+          echo "Created CBRPNK.zip with files in CBRPNK/ folder"
       
       - name: Create Release and Upload Assets
         if: steps.check_release.outputs.exists == 'false'

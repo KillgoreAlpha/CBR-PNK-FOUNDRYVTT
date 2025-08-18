@@ -4,16 +4,11 @@
   "description": "Unofficial system to CBR+PNK",
   "authors": [
     {
-      "name": "Kiszu",
-      "discord": "2137",
-      "url": "https://github.com/P4NTY/"
-    },
-    {
       "name": "KillgoreAlpha",
       "url": "https://github.com/KillgoreAlpha/"
     }
   ],
-  "version": "0.97.2",
+  "version": "0.98",
   "compatibility": {
     "minimum": 11,
     "verified": 13,
@@ -24,5 +19,5 @@
   "url": "https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT",
   "background": "systems/CBRPNK/assets/CBRPNK_splash.png",
   "manifest": "https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/releases/latest/download/system.json",
-  "download": "https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/releases/download/0.97.2/CBRPNK.zip"
+  "download": "https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/releases/download/0.98/CBRPNK.zip"
 }
