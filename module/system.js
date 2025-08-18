@@ -11,8 +11,8 @@ export class CbrSettings {
 		});
 
 		game.settings.register("CBRPNK", "netscapeModule", {
-			name: "Netscape V1.0",
-			hint: "Setting to add Netscape V1.0 hacking options to character sheets.",
+			name: "Netscape",
+			hint: "Setting to add Netscape hacking options to character sheets.",
 			scope: "world",
 			config: true,
 			type: Boolean,
