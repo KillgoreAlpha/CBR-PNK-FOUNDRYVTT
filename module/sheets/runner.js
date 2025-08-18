@@ -13,7 +13,7 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
     getData() {
         const context = super.getData();
         context.system = context.actor.system;
-        context.system.wierd = game.settings.get("CBRPNK", "wierdModule");
+        context.system.weird = game.settings.get("CBRPNK", "weirdModule");
         context.system.AugGlitchedCheck = game.settings.get("CBRPNK", "AugGlitchedCheck");
 
         return context;
@@ -232,7 +232,7 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
             img: this.actor.img,
             name: this.actor.name,
             desc: "",
-            efect: dataRoll.efect,
+            effect: dataRoll.effect,
             threat: dataRoll.threat,
             action: ["CLOSE","RANGED"].includes(dataRoll.skill) ? dataRoll.skill + " COMBAT" : dataRoll.skill,
             approach: dataRoll.approach

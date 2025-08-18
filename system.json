@@ -8,7 +8,7 @@
       "url": "https://github.com/KillgoreAlpha"
     }
   ],
-  "version": "0.98.1",
+  "version": "0.98.2",
   "compatibility": {
     "minimum": 11,
     "verified": 13,
@@ -19,5 +19,5 @@
   "url": "https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT",
   "background": "systems/CBRPNK/assets/CBRPNK_splash.png",
   "manifest": "https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/releases/latest/download/system.json",
-  "download": "https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/releases/download/v0.98.1/CBRPNK.zip"
+  "download": "https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/releases/download/v0.98.2/CBRPNK.zip"
 }

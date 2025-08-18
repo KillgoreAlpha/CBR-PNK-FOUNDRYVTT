@@ -29,11 +29,11 @@
     </section>
     <section class="roll">
       <div>
-        <div class="efect">
-          <input name="efect" type="checkbox" id="{{actor._id}}_efect-1" {{#if (isEqual system.roll.efect 1) }}checked{{/if}}/><label for="{{actor._id}}_efect-1">1</label>
-          <input name="efect" type="checkbox" id="{{actor._id}}_efect-2" {{#if (isEqual system.roll.efect 2) }}checked{{/if}}/><label for="{{actor._id}}_efect-2">2</label>
-          <input name="efect" type="checkbox" id="{{actor._id}}_efect-3" {{#if (isEqual system.roll.efect 3) }}checked{{/if}}/><label for="{{actor._id}}_efect-3">3</label>
-          <input name="efect" type="checkbox" id="{{actor._id}}_efect-4" {{#if (isEqual system.roll.efect 4) }}checked{{/if}}/><label for="{{actor._id}}_efect-4">4</label>
+        <div class="effect">
+          <input name="effect" type="checkbox" id="{{actor._id}}_effect-1" {{#if (isEqual system.roll.effect 1) }}checked{{/if}}/><label for="{{actor._id}}_effect-1">1</label>
+          <input name="effect" type="checkbox" id="{{actor._id}}_effect-2" {{#if (isEqual system.roll.effect 2) }}checked{{/if}}/><label for="{{actor._id}}_effect-2">2</label>
+          <input name="effect" type="checkbox" id="{{actor._id}}_effect-3" {{#if (isEqual system.roll.effect 3) }}checked{{/if}}/><label for="{{actor._id}}_effect-3">3</label>
+          <input name="effect" type="checkbox" id="{{actor._id}}_effect-4" {{#if (isEqual system.roll.effect 4) }}checked{{/if}}/><label for="{{actor._id}}_effect-4">4</label>
         </div>
         <div class="threat">
           <input name="threat" type="checkbox" id="{{actor._id}}_threat-1" {{#if (isEqual system.roll.threat 1) }}checked{{/if}}/><label for="{{actor._id}}_threat-1">1</label>
@@ -244,7 +244,7 @@
           <span class="{{#if system.skills.STREETWISE.EXPERTISES.NAVIGATION}}active{{/if}}">NAVIGATION</span>
         </p></td>
       </tr>
-      {{#if system.wierd}}
+      {{#if system.weird}}
       <tr data-gliched="{{system.skills.ATTUNE.gliched}}" data-value="{{system.skills.ATTUNE.dice}}"  class="{{#if (isEqual system.roll.skill "ATTUNE")}}select{{/if}}">
         <td><h3>ATTUNE</h3></td>
         <td><div class="dots">
@@ -507,7 +507,7 @@
       <label for="{{actor._id}}_SR">SPECIAL RESISTANCE</label>
     </div>
     <ol start="1">
-        <li data-type="efect"`>
+        <li data-type="effect"`>
             <input type="text" value="{{system.HARM.light.name}}" name="system.HARM.light.name" />
             <div class="track" data-type="light" style="--max: 2;--value: {{system.HARM.light.value}};">2</div>
         </li>

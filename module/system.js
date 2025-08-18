@@ -1,8 +1,8 @@
 export class CbrSettings {
 	static register() {
-		game.settings.register("CBRPNK", "wierdModule", {
-			name: "Wierd",
-			hint: "Setting to add Wierd options to character sheets.",
+		game.settings.register("CBRPNK", "weirdModule", {
+			name: "weird",
+			hint: "Setting to add Weird options to character sheets.",
 			scope: "world",
 			config: true,
 			type: Boolean,
