@@ -1,0 +1,40 @@
+<form autocomplete="off" class="vpnTrackerCard">
+    <div class="art">
+        <img src="{{actor.img}}" title="{{actor.name}}" data-edit="img">
+        <h1><input name="name" type="text" placeholder="VPN Tracker Name" value="{{actor.name}}"/></h1>
+    </div>
+    <div class="vpn-content">
+        <div class="vpn-info">
+            <h3>{{system.name}}</h3>
+            <p class="vpn-description">{{system.desc}}</p>
+        </div>
+        <div class="vpn-tracker-display">
+            <h4>ANONYMITY STATUS</h4>
+            <div class="vpn-track">
+                <input name="vpn" type="checkbox" id="{{actor._id}}_vpn-1" {{#if (isBigger system.value 1) }}checked{{/if}}/><label for="{{actor._id}}_vpn-1"></label>
+                <input name="vpn" type="checkbox" id="{{actor._id}}_vpn-2" {{#if (isBigger system.value 2) }}checked{{/if}}/><label for="{{actor._id}}_vpn-2"></label>
+                <input name="vpn" type="checkbox" id="{{actor._id}}_vpn-3" {{#if (isBigger system.value 3) }}checked{{/if}}/><label for="{{actor._id}}_vpn-3"></label>
+                <input name="vpn" type="checkbox" id="{{actor._id}}_vpn-4" {{#if (isBigger system.value 4) }}checked{{/if}}/><label for="{{actor._id}}_vpn-4"></label>
+                <input name="vpn" type="checkbox" id="{{actor._id}}_vpn-5" {{#if (isBigger system.value 5) }}checked{{/if}}/><label for="{{actor._id}}_vpn-5"></label>
+                <input name="vpn" type="checkbox" id="{{actor._id}}_vpn-6" {{#if (isBigger system.value 6) }}checked{{/if}}/><label for="{{actor._id}}_vpn-6"></label>
+            </div>
+            <div class="vpn-status">
+                {{#if (isEqual system.value 0)}}
+                    <p class="status-safe">🛡️ FULLY ANONYMOUS - Safe to operate</p>
+                {{else if (isEqual system.value system.max)}}
+                    <p class="status-blown">⚠️ ANONYMITY BLOWN - Network is hunting you!</p>
+                {{else}}
+                    <p class="status-warning">⚡ COMPROMISED - {{system.value}}/{{system.max}} marks</p>
+                {{/if}}
+            </div>
+            <div class="vpn-instructions">
+                <p><strong>Left-click:</strong> Mark a tick (overt aggression or coding)</p>
+                <p><strong>Right-click:</strong> Remove a tick</p>
+                <p><strong>Warning:</strong> Once full, you are no longer anonymous and face the might of the network!</p>
+            </div>
+        </div>
+        <div class="vpn-notes">
+            {{editor system.desc target="system.desc" button=true owner=owner editable=editable}}
+        </div>
+    </div>
+</form>

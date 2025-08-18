@@ -10,6 +10,20 @@
           <label for="{{actor._id}}_hunted">HUNTED</label>
           <div class="CRED" style="--progress: {{system.angle.CRED.value}};">CRED</div>
         </div>
+        {{#if system.netscape}}
+        <div class="netscape-angle">
+          <h4>NETSCAPE</h4>
+          <div class="net-persona">
+            <label>NET PERSONA:</label>
+            <select name="system.NETSCAPE.netPersona.theme">
+              {{#each system.NETSCAPE.netPersona.themes}}
+                <option value="{{@key}}" {{#if (isEqual ../system.NETSCAPE.netPersona.theme @key)}}selected{{/if}}>{{this}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <p class="theme-desc">Your cyberspace sensory experience theme. Incongruities can cause GLITCHES.</p>
+        </div>
+        {{/if}}
         <div class="headerButton">
           <input id="{{actor._id}}_angleOpen" class="value" name="system.angle.isOpen" type="checkbox" {{#if system.angle.isOpen}}checked{{/if}}/>
           <label class="angleOpen" for="{{actor._id}}_angleOpen">{{#if system.angle.isOpen}}Collapse{{else}}Expand{{/if}}</label>
