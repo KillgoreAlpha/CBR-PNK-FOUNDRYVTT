@@ -26,7 +26,7 @@
   --dark: 47, 47, 47;
 }
 #pause,
-.GLICHED :is(h3, .text) {
+.GLITCHED :is(h3, .text) {
   --gap-horizontal: 20px;
   --gap-vertical: 2px;
   --time-anim: 2.25s;
@@ -44,11 +44,11 @@
 form.card section {
   margin: 20px 0px 0px 10px;
 }
-.GLICHED .dots::after {
+.GLITCHED .dots::after {
   color: rgb(var(--yellow)) !important;
   font-family: "Mono";
 }
-.GLICHED h3 {
+.GLITCHED h3 {
   position: relative;
   display: inline-block;
   margin: 0 0 8px;
@@ -56,7 +56,7 @@ form.card section {
   width: 95%;
   font-family: "Mono";
 }
-.GLICHED h3:before, .GLICHED h3:after {
+.GLITCHED h3:before, .GLITCHED h3:after {
   content: attr(data-text);
   position: absolute;
   width: 100%;
@@ -65,12 +65,12 @@ form.card section {
   font: inherit;
   visibility: hidden;
 }
-.GLICHED h3:before {
+.GLITCHED h3:before {
   left: 5px;
   text-shadow: -2px 0 rgb(var(--weird));
   clip: auto;
 }
-.GLICHED h3:after {
+.GLITCHED h3:after {
   left: 3px;
   text-shadow: -2px 0 rgb(var(--blue));
   clip: auto;
@@ -84,11 +84,11 @@ form.card section {
   background-color: transparent !important;
 }
 
-.GLICHED h3:before {
+.GLITCHED h3:before {
   visibility: visible;
   animation: glitch-anim-2 4s infinite linear alternate-reverse;
 }
-.GLICHED h3:after {
+.GLITCHED h3:after {
   visibility: visible;
   animation: glitch-anim 2.5s infinite linear alternate-reverse;
 }
@@ -312,7 +312,7 @@ form.card section {
   position: relative;
 }
 .approach .dots::after {
-  content: "GLICHED";
+  content: "GLITCHED";
   position: absolute;
   font-size: x-small;
   bottom: -6px;
@@ -429,7 +429,7 @@ section.skills .dots .box {
   }
 }
 
-.augmentations .GLICHED .text {
+.augmentations .GLITCHED .text {
   font-family: "Mono";
   text-shadow:
     5px 0 0 rgb(var(--red)),
@@ -463,7 +463,7 @@ section.skills .dots .box {
   font-family: "Mono";
 }
 
-.augmentations .GLICHED .text p {
+.augmentations .GLITCHED .text p {
   color: rgb(var(--red));
 }
 section.gear {
@@ -574,6 +574,11 @@ section.gear p {
   width: 26px;
   height: 26px;
 }
+
+/* CBR+PNK stress symbol class for chat messages */
+.stress-symbol {
+  font-family: "cbrpnk", "Mono";
+}
 .skills span.active {
   font-weight: bold;
   color: rgb(var(--red));
@@ -597,18 +602,20 @@ section.gear p {
   margin: 0;
 }
 .harm li[data-type="effect"]::after { 
-  content: "} E"; 
+  content: "}E"; 
   font-family: "cbrpnk", "Mono";
 }
 
 .harm li[data-type="dice"]::after { 
-  content: " -"; 
+  content: "{-"; 
   font-family: "cbrpnk", "Mono";
 }
 
 .harm li[data-type="out"]::after { 
   content: "OUT"; 
   font-family: "Mono";
+  font-weight: bold;
+  padding-left: 2px;
 }
 
 .harm li[data-type="die"]::after { 
@@ -815,7 +822,7 @@ li.chat-message.message.flexcol .desc strong {
   color: rgb(var(--blue));
 }
 
-li.chat-message.message.flexcol .dice span.GLICHED {
+li.chat-message.message.flexcol .dice span.GLITCHED {
   background: rgb(var(--red));
   color: rgb(var(--white));
 }

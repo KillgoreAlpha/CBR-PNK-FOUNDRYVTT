@@ -18,7 +18,7 @@ Hooks.once("init", function () {
     success("Successfully initialized CBR+PNK!");
 });
 
-// Custom HandelBars
+// Custom Handlebars
 Handlebars.registerHelper("for", function(options, elem) {
     let result = ``;
     for (let i = 1 ; i <= options ; i++)
@@ -31,5 +31,5 @@ Handlebars.registerHelper('isBigger', function (max, value) {
 });
 
 Handlebars.registerHelper('isEqual', function (max, value) {
-    return value == max;
+    return value === max;
 });

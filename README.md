@@ -7,7 +7,7 @@ Unofficial system to play CBR+PNK on Foundry VTT
 ## HOW IT LOOKS:
 ![image](https://github.com/KillgoreAlpha/CBR-PNK-FOUNDRYVTT/blob/main/assets/image.png?raw=true)
 - The left button is adding and the right button is decreasing values.
-- GLICHED status can also be given with the middle mouse button -OR- just click GLICHED.
+- GLITCHED status can also be given with the middle mouse button -OR- just click GLITCHED.
 - Selecting the value of the APPROACH and SKILL by clicking on the label.
 - Hunter card - as Actor
 - Item card

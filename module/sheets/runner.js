@@ -67,11 +67,11 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
                 }
             break;
             case "stress":
-                if (btnClick == "l") {
-                    if (this.actor.system.stress.value+1 == 7 && !this.actor.system.stress.isLOAD) this.overLOAD();
+                if (btnClick === "l") {
+                    if (this.actor.system.stress.value+1 === 7 && !this.actor.system.stress.isLOAD) this.overLOAD();
                     this.actor.update({ "system.stress.value": Math.min(this.actor.system.stress.value+1, this.actor.system.stress.max) });
                 }
-                else if (btnClick == "r")
+                else if (btnClick === "r")
                     this.actor.update({
                         "system.stress.value": Math.max(this.actor.system.stress.value-1,0),
                         "system.stress.isLOAD": false
@@ -82,21 +82,21 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
 
                 if (event.target.classList[0] === 'box') {
                     const currSkillValue = event.target.parentElement.parentElement.getAttribute("data-value");
-                    if ( btnClick == "l" )
+                    if ( btnClick === "l" )
                         this.actor.update({ [clickedApproachName+".dice"]: Math.min(currSkillValue+1, 2) });
-                    else if ( btnClick == "r" )
+                    else if ( btnClick === "r" )
                         this.actor.update({ [clickedApproachName+".dice"]: Math.max(currSkillValue-1,0) });
                 }
                 else if ( event.target.classList[0] === 'dots' ) {
                     this.actor.update({ 
-                        ["system.approach."+event.target.parentElement.querySelector("h3").innerText+".GLICHED"]: 
-                        !this.actor.system.approach[event.target.parentElement.querySelector("h3").innerText].GLICHED
+                        ["system.approach."+event.target.parentElement.querySelector("h3").innerText+".GLITCHED"]: 
+                        !this.actor.system.approach[event.target.parentElement.querySelector("h3").innerText].GLITCHED
                     });
                 }
                 if ( event.target.nodeName === "H3" ) {
-                    if ( btnClick == "l" ) 
+                    if ( btnClick === "l" )
                         this.actor.update({ "system.roll.approach": event.target.innerText });
-                    else if ( btnClick == "r" ) 
+                    else if ( btnClick === "r" )
                         this.actor.update({ "system.roll.approach": "" }); 
                 }
             break;
@@ -104,25 +104,19 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
                 const clickedSkillName = event.target.closest("tr").querySelector("h3").innerText.split(" ")[0];
                 if (event.target.classList[0] === 'box') {
                     const currSkillValue = event.target.closest("tr").getAttribute("data-value");
-                    if (btnClick == "l")
+                    if (btnClick === "l")
                         this.actor.update({ ["system.skills."+clickedSkillName+".dice"]: Math.min(currSkillValue+1, 2) });
-                    else if (btnClick == "r")
+                    else if (btnClick === "r")
                         this.actor.update({ ["system.skills."+clickedSkillName+".dice"]: Math.max(currSkillValue-1,0) });
-                    else if ( btnClick == "m" ) {
+                    else if ( btnClick === "m" ) {
                         const arrValues = [];
                         for (let index = 0; index <= currSkillValue; index++) {
                             arrValues.push(index);
                         }
 
-                        console.log({
-                            oldValue: this.actor.system.skills[clickedSkillName].gliched,
-                            newValue: (this.actor.system.skills[clickedSkillName].gliched + 1)%arrValues.length
-                        });
-                        
-
                         this.actor.update({
-                            ["system.skills."+clickedSkillName+".gliched"]:
-                            arrValues[ (this.actor.system.skills[clickedSkillName].gliched + 1)%arrValues.length ]
+                            ["system.skills."+clickedSkillName+".glitched"]:
+                            arrValues[ (this.actor.system.skills[clickedSkillName].glitched + 1)%arrValues.length ]
                         })
                     }
                 }
@@ -134,20 +128,20 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
                     });
                 }
                 if ( event.target.nodeName === "H3" ) {
-                    if ( btnClick == "l" ) 
+                    if ( btnClick === "l" )
                         this.actor.update({ "system.roll.skill": event.target.innerText.split(" ")[0] });
-                    else if (  btnClick == "r" ) 
+                    else if (  btnClick === "r" )
                         this.actor.update({ "system.roll.skill": "" });
                 }
             break;
             case "augmentations": 
-                if (  event.target.nodeName === "INPUT" && btnClick == "m" ) 
+                if (  event.target.nodeName === "INPUT" && btnClick === "m" )
                     this.actor.update({ 
-                        ["system.AUGMENTATIONS."+event.target.getAttribute("name").split(".")[2]+".GLICHED" ]: !this.actor.system.AUGMENTATIONS[event.target.getAttribute("name").split(".")[2]].GLICHED
+                        ["system.AUGMENTATIONS."+event.target.getAttribute("name").split(".")[2]+".GLITCHED" ]: !this.actor.system.AUGMENTATIONS[event.target.getAttribute("name").split(".")[2]].GLITCHED
                     });
-                if ( event.target.nodeName === "P" && btnClick == "l" )
+                if ( event.target.nodeName === "P" && btnClick === "l" )
                     this.actor.update({ 
-                        ["system.AUGMENTATIONS."+event.target.parentElement.querySelector('[name]').getAttribute("name").split(".")[2]+".GLICHED" ]: !this.actor.system.AUGMENTATIONS[event.target.parentElement.querySelector('[name]').getAttribute("name").split(".")[2]].GLICHED
+                        ["system.AUGMENTATIONS."+event.target.parentElement.querySelector('[name]').getAttribute("name").split(".")[2]+".GLITCHED" ]: !this.actor.system.AUGMENTATIONS[event.target.parentElement.querySelector('[name]').getAttribute("name").split(".")[2]].GLITCHED
                     });
             break;
             case "gear":
@@ -159,38 +153,38 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
                 }
                 else if ( event.target.classList[0] === "stack" ) {
                     const selectGear = event.target.getAttribute('data-type');
-                    if ( selectGear === "eq21" && btnClick == "l" )
+                    if ( selectGear === "eq21" && btnClick === "l" )
                         this.actor.update({
-                            [`system.GEAR.Equpment.${selectGear}.stack`] : Math.min(
-                                this.actor.system.GEAR.Equpment[selectGear].stack + 1,
-                                this.actor.system.GEAR.Equpment[selectGear].max
+                            [`system.GEAR.Equipment.${selectGear}.stack`] : Math.min(
+                                this.actor.system.GEAR.Equipment[selectGear].stack + 1,
+                                this.actor.system.GEAR.Equipment[selectGear].max
                             ),
                             [`system.GEAR.LOAD.value`] : this.actor.system.GEAR.LOAD.value +
-                                (this.actor.system.GEAR.Equpment[selectGear].stack === this.actor.system.GEAR.Equpment[selectGear].max ? 0 : 1)
+                                (this.actor.system.GEAR.Equipment[selectGear].stack === this.actor.system.GEAR.Equipment[selectGear].max ? 0 : 1)
                         });
-                    else if ( selectGear === "eq21" && btnClick == "r" )
+                    else if ( selectGear === "eq21" && btnClick === "r" )
                         this.actor.update({
-                            [`system.GEAR.Equpment.${selectGear}.stack`] : Math.max(this.actor.system.GEAR.Equpment[selectGear].stack - 1, 0),
+                            [`system.GEAR.Equipment.${selectGear}.stack`] : Math.max(this.actor.system.GEAR.Equipment[selectGear].stack - 1, 0),
                             [`system.GEAR.LOAD.value`] : Math.max(this.actor.system.GEAR.LOAD.value - 1, 0)
                         });
-                    else if ( btnClick == "l" ) 
+                    else if ( btnClick === "l" )
                         this.actor.update({
-                            [`system.GEAR.Equpment.${selectGear}.stack`] : Math.min(
-                                this.actor.system.GEAR.Equpment[selectGear].stack + 1,
-                                this.actor.system.GEAR.Equpment[selectGear].max
+                            [`system.GEAR.Equipment.${selectGear}.stack`] : Math.min(
+                                this.actor.system.GEAR.Equipment[selectGear].stack + 1,
+                                this.actor.system.GEAR.Equipment[selectGear].max
                             )
                         });
-                    else if ( btnClick == "r" ) 
+                    else if ( btnClick === "r" )
                         this.actor.update({
-                            [`system.GEAR.Equpment.${selectGear}.stack`] : Math.max(this.actor.system.GEAR.Equpment[selectGear].stack - 1, 0)
+                            [`system.GEAR.Equipment.${selectGear}.stack`] : Math.max(this.actor.system.GEAR.Equipment[selectGear].stack - 1, 0)
                         });
                 }
                 else if ( event.target.closest('label') ){
                     const selectGear = event.target.closest('label').getAttribute("data-id");
-                    const isUse = this.actor.system.GEAR.Equpment[selectGear].isUse;
-                    const gearValue = this.actor.system.GEAR.Equpment[selectGear].value;
+                    const isUse = this.actor.system.GEAR.Equipment[selectGear].isUse;
+                    const gearValue = this.actor.system.GEAR.Equipment[selectGear].value;
                     this.actor.update({
-                        [`system.GEAR.Equpment.${selectGear}.isUse`] : !isUse,
+                        [`system.GEAR.Equipment.${selectGear}.isUse`] : !isUse,
                         [`system.GEAR.LOAD.value`] : Math.max(0 , (!isUse ? this.actor.system.GEAR.LOAD.value + gearValue : this.actor.system.GEAR.LOAD.value - gearValue)
                         )
                     });
@@ -199,11 +193,11 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
             case "harm":
                 if ( event.target.classList[0] === "track" ){
                     const harmStage = event.target.getAttribute("data-type");
-                    if ( btnClick == "l" ) 
+                    if ( btnClick === "l" )
                         this.actor.update({
                             [`system.HARM.${harmStage}.value`] : Math.min(this.actor.system.HARM[harmStage].value + 1, this.actor.system.HARM[harmStage].max)
                         });
-                    else if ( btnClick == "r" ) 
+                    else if ( btnClick === "r" )
                         this.actor.update({
                             [`system.HARM.${harmStage}.value`] : Math.max(this.actor.system.HARM[harmStage].value - 1, 0)
                         });
@@ -214,16 +208,30 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
     }
 
     async actionRoll(){
+        const selectedApproach = this.actor.system.roll.approach;
+        const selectedSkill = this.actor.system.roll.skill;
+        
+        // Safety check - ensure approach and skill are selected
+        if (!selectedApproach || !selectedSkill) {
+            ui.notifications.warn("Please select both an Approach and a Skill before rolling.");
+            return;
+        }
+        
         const dataRoll = {
             ...this.actor.system.roll,
-            GLICHED: 
-                Object.values(this.actor.system.AUGMENTATIONS).filter( 
-                    ({GLICHED,isOpen}) => GLICHED && ( !this.actor.system.AugGlitchedCheck || isOpen )
-                ).length + 
-                this.actor.system.approach[this.actor.system.roll.approach].GLICHED + 
-                this.actor.system.skills[this.actor.system.roll.skill].gliched,
-            dices: `${this.actor.system.approach[this.actor.system.roll.approach].dice} + ${(this.actor.system.skills[this.actor.system.roll.skill]||{dice: 0}).dice}`
-        }, dicePool = Math.min(6, eval(`${dataRoll.dices}${dataRoll.addDice||"+0"}`) );
+            GLITCHED:
+                Object.values(this.actor.system.AUGMENTATIONS).filter(
+                    ({GLITCHED,isOpen}) => GLITCHED && ( !this.actor.system.AugGlitchedCheck || isOpen )
+                ).length +
+                (this.actor.system.approach[selectedApproach]?.GLITCHED ? 1 : 0) +
+                (this.actor.system.skills[selectedSkill]?.glitched || 0),
+            dices: `${this.actor.system.approach[selectedApproach]?.dice || 0} + ${this.actor.system.skills[selectedSkill]?.dice || 0}`
+        };
+        
+        const approachDice = this.actor.system.approach[selectedApproach]?.dice || 0;
+        const skillDice = this.actor.system.skills[selectedSkill]?.dice || 0;
+        const addDice = parseInt(dataRoll.addDice) || 0;
+        const dicePool = Math.min(6, approachDice + skillDice + addDice);
         let letsRoll, rollResult = 0;
         const templateData = {
             title: "",
@@ -248,17 +256,17 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
             rollResult = letsRoll.terms[0].results.map( ({result}) => result)
         }
 
-        if (rollResult.filter( dice => dice == 6).length >= 2) {
+        if (rollResult.filter( dice => dice === 6).length >= 2) {
             templateData.title = "Critical";
             templateData.class = "critical";
             templateData.desc = "It goes as well as intended.";
         }
-        else if (Math.max(...rollResult) == 6 ) {
+        else if (Math.max(...rollResult) === 6 ) {
             templateData.title = "Success";
             templateData.class = "good";
             templateData.desc = "It goes as well as intended.";
         }
-        else if (rollResult.filter( dice => dice == 4 || dice == 5).length ) {
+        else if (rollResult.filter( dice => dice === 4 || dice === 5).length ) {
             templateData.title = "Partial Success";
             templateData.class = "consequence";
             templateData.desc = "<div>Success, but it comes with a <strong>Consequence</strong>.</div>";
@@ -269,19 +277,19 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
             templateData.desc = "<div>Things go bad as they fail and also suffer a <strong>Consequence</strong>.</div>";
         }
 
-        if (dataRoll.GLICHED) {
-            rollResult.slice(0,dataRoll.GLICHED).forEach( dice => {
+        if (dataRoll.GLITCHED) {
+            rollResult.slice(0,dataRoll.GLITCHED).forEach( dice => {
                 if (dice <= 3) {
-                    templateData.desc += `<div class="GLICHED">${dice}: It triggers a further <strong>Level 2 Consequence</strong> that can’t be Resisted.</div>`;
+                    templateData.desc += `<div class="GLITCHED">${dice}: It triggers a further <strong>Level 2 Consequence</strong> that can't be Resisted.</div>`;
                 }
-                else if ( dice == 4 || dice == 5 ) {
-                    templateData.desc += `<div class="GLICHED">${dice}: The additional <strong>Consequence</strong> can be Resisted normally</div>`;
+                else if ( dice === 4 || dice === 5 ) {
+                    templateData.desc += `<div class="GLITCHED">${dice}: The additional <strong>Consequence</strong> can be Resisted normally</div>`;
                 }
             })
         }
 
         rollResult.forEach( (dice,index) => {
-            templateData.dices += `<span class="${index < dataRoll.GLICHED ? "GLICHED" : ""}">${dice}</span>`;
+            templateData.dices += `<span class="${index < dataRoll.GLITCHED ? "GLITCHED" : ""}">${dice}</span>`;
         });
 
         const content = await renderTemplate('systems/CBRPNK/templates/roll-card.hbs', templateData);
@@ -306,9 +314,9 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
             dices: "",
             img: this.actor.img,
             name: this.actor.name,
-            desc: "<p>When you mark your last ⚡, an Approach of your choosing becomes permanently <em>GLITCHED</em> and immediately incurs a complication, such as:</p>" +
-            "<ul><li>You are taken out of action.</li><li>You expose the team’s weakness.</li><li>You make the team lose an advantage.</li><li>You damage or overlook something crucial.</li></ul>"+
-            "<p>While <strong>OVERLOADED</strong> you can’t perform actions that would require ⚡. <strong>TAKE A BREATHER</strong> to relieve ⚡ and clear this status.</p>",
+            desc: "<p>When you mark your last <span class=\"stress-symbol\">*</span>, an Approach of your choosing becomes permanently <em>GLITCHED</em> and immediately incurs a complication, such as:</p>" +
+            "<ul><li>You are taken out of action.</li><li>You expose the team's weakness.</li><li>You make the team lose an advantage.</li><li>You damage or overlook something crucial.</li></ul>"+
+            "<p>While <strong>OVERLOADED</strong> you can't perform actions that would require <span class=\"stress-symbol\">*</span>. <strong>TAKE A BREATHER</strong> to relieve <span class=\"stress-symbol\">*</span> and clear this status.</p>",
             action: "",
             approach: "OVERLOAD"
         };
@@ -324,10 +332,22 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
     }
 
     async resistRoll() {
+        const selectedApproach = this.actor.system.roll.approach;
+        
+        // Safety check - ensure approach is selected
+        if (!selectedApproach) {
+            ui.notifications.warn("Please select an Approach before making a Resist Roll.");
+            return;
+        }
+        
         const dataRoll = {
             ...this.actor.system.roll,
-            dices: `${this.actor.system.approach[this.actor.system.roll.approach].dice}`
-        }, dicePool = Math.min(6, eval(`${dataRoll.dices}${dataRoll.addDice||"+0"}`) );
+            dices: `${this.actor.system.approach[selectedApproach]?.dice || 0}`
+        };
+        
+        const approachDice = this.actor.system.approach[selectedApproach]?.dice || 0;
+        const addDice = parseInt(dataRoll.addDice) || 0;
+        const dicePool = Math.min(6, approachDice + addDice);
         let letsRoll, rollResult = 0, stress = this.actor.system.stress.value;
         const templateData = {
             title: "",
@@ -350,30 +370,30 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
             rollResult = letsRoll.terms[0].results.map( ({result}) => result)
         }
 
-        if (rollResult.filter( dice => dice == 6).length == 2) {
+        if (rollResult.filter( dice => dice === 6).length === 2) {
             templateData.title = "2EZ";
             templateData.class = "critical";
-            templateData.desc = "THAT’S IT.";
+            templateData.desc = "THAT'S IT.";
         }
-        else if (Math.max(...rollResult) == 6 ) {
+        else if (Math.max(...rollResult) === 6 ) {
             stress += 1;
             templateData.title = "SOLID";
             templateData.class = "good";
-            templateData.desc = "MARK ⚡";
+            templateData.desc = "MARK <span class=\"stress-symbol\">*</span>";
             this.actor.update({ "system.stress.value": Math.min( this.actor.system.stress.value + 1, 7) });
         }
-        else if (rollResult.filter( dice => dice == 4 || dice == 5).length ) {
+        else if (rollResult.filter( dice => dice === 4 || dice === 5).length ) {
             stress += 2;
             templateData.title = "NOT BAD";
             templateData.class = "consequence";
-            templateData.desc = "MARK ⚡⚡";
+            templateData.desc = "MARK <span class=\"stress-symbol\">*</span><span class=\"stress-symbol\">*</span>";
             this.actor.update({ "system.stress.value": Math.min( this.actor.system.stress.value + 2, 7) });
         }
         else {
             stress += 3;
             templateData.title = "CLOSE";
             templateData.class = "bad";
-            templateData.desc = "MARK ⚡⚡⚡";
+            templateData.desc = "MARK <span class=\"stress-symbol\">*</span><span class=\"stress-symbol\">*</span><span class=\"stress-symbol\">*</span>";
             this.actor.update({ "system.stress.value": Math.min( this.actor.system.stress.value + 3, 7) });
         }
 
@@ -398,10 +418,22 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
         }
     }
     async breathRoll() {
+        const selectedApproach = this.actor.system.roll.approach;
+        
+        // Safety check - ensure approach is selected
+        if (!selectedApproach) {
+            ui.notifications.warn("Please select an Approach before Taking a Breath.");
+            return;
+        }
+        
         const dataRoll = {
             ...this.actor.system.roll,
-            dices: `${this.actor.system.approach[this.actor.system.roll.approach].dice}`
-        }, dicePool = Math.min(6, eval(`${dataRoll.dices}${dataRoll.addDice||"+0"}`) );
+            dices: `${this.actor.system.approach[selectedApproach]?.dice || 0}`
+        };
+        
+        const approachDice = this.actor.system.approach[selectedApproach]?.dice || 0;
+        const addDice = parseInt(dataRoll.addDice) || 0;
+        const dicePool = Math.min(6, approachDice + addDice);
         let letsRoll, rollResult = 0;
         const templateData = {
             title: "",
@@ -424,25 +456,25 @@ export default class cbrRunner extends foundry.appv1.sheets.ActorSheet {
             rollResult = letsRoll.terms[0].results.map( ({result}) => result)
         }
 
-        if (rollResult.filter( dice => dice == 6).length == 2) {
-            templateData.title = "YOU’VE BEEN THROUGH WORSE.";
+        if (rollResult.filter( dice => dice === 6).length === 2) {
+            templateData.title = "YOU'VE BEEN THROUGH WORSE.";
             templateData.class = "critical";
-            templateData.desc = "<strong>CLEAR ALL ⚡</strong> -OR- <strong>IGNORE BOTH</strong> LEVELS 1 AND 2 HARM PENALTIES FOR THE REMAINDER OF THE RUN.";
+            templateData.desc = "<strong>CLEAR ALL <span class=\"stress-symbol\">*</span></strong> -OR- <strong>IGNORE BOTH</strong> LEVELS 1 AND 2 HARM PENALTIES FOR THE REMAINDER OF THE RUN.";
         }
-        else if (Math.max(...rollResult) == 6 ) {
+        else if (Math.max(...rollResult) === 6 ) {
             templateData.title = "THAT SHOULD WORK.";
             templateData.class = "good";
-            templateData.desc = "<strong>CLEAR ⚡⚡⚡</strong> -OR- <strong>IGNORE</strong> LEVEL 1 OR 2 HARM PENALTIES FOR THE REMAINDER OF THE RUN.";
+            templateData.desc = "<strong>CLEAR <span class=\"stress-symbol\">*</span><span class=\"stress-symbol\">*</span><span class=\"stress-symbol\">*</span></strong> -OR- <strong>IGNORE</strong> LEVEL 1 OR 2 HARM PENALTIES FOR THE REMAINDER OF THE RUN.";
         }
-        else if (rollResult.filter( dice => dice == 4 || dice == 5).length ) {
+        else if (rollResult.filter( dice => dice === 4 || dice === 5).length ) {
             templateData.title = "SUCK IT UP.";
             templateData.class = "consequence";
-            templateData.desc = "<strong>CLEAR ⚡⚡</strong> -OR- <strong>IGNORE</strong> LLEVEL 1 HARM PENALTIES FOR THE REMAINDER OF THE RUN.";
+            templateData.desc = "<strong>CLEAR <span class=\"stress-symbol\">*</span><span class=\"stress-symbol\">*</span></strong> -OR- <strong>IGNORE</strong> LEVEL 1 HARM PENALTIES FOR THE REMAINDER OF THE RUN.";
         }
         else {
             templateData.title = "TAKE WHAT YOU CAN GET.";
             templateData.class = "bad";
-            templateData.desc = "CLEAR ⚡";
+            templateData.desc = "CLEAR <span class=\"stress-symbol\">*</span>";
             this.actor.update({ 
                 "system.stress.value": Math.max( this.actor.system.stress.value - 1, 0),
                 "system.stress.isLOAD": false
