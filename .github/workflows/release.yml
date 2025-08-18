@@ -1,0 +1,63 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'system.json'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Read version from system.json
+        id: get_version
+        run: |
+          VERSION=$(jq -r '.version' system.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version found: $VERSION"
+      
+      - name: Check if release exists
+        id: check_release
+        run: |
+          if gh release view "v${{ steps.get_version.outputs.version }}" > /dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Release v${{ steps.get_version.outputs.version }} already exists"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "Release v${{ steps.get_version.outputs.version }} does not exist"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Create zip archive
+        if: steps.check_release.outputs.exists == 'false'
+        run: |
+          # Create zip excluding .git directory and other unnecessary files
+          zip -r CBRPNK.zip . \
+            -x ".git/*" \
+            -x ".github/*" \
+            -x "*.md" \
+            -x ".gitignore"
+          echo "Created CBRPNK.zip"
+      
+      - name: Create Release and Upload Assets
+        if: steps.check_release.outputs.exists == 'false'
+        run: |
+          gh release create "v${{ steps.get_version.outputs.version }}" \
+            --title "Release v${{ steps.get_version.outputs.version }}" \
+            --notes "Release v${{ steps.get_version.outputs.version }}
+
+          ## Downloads
+          - [CBRPNK.zip](https://github.com/${{ github.repository }}/releases/latest/download/CBRPNK.zip) - Complete system files
+          - [system.json](https://github.com/${{ github.repository }}/releases/latest/download/system.json) - System manifest" \
+            CBRPNK.zip \
+            system.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
